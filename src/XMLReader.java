@@ -9,6 +9,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * The input functions of the program. The readXML method takes a text xml
@@ -99,24 +101,78 @@ public class XMLReader
         }
     }
 
-    public void showArrayList(ArrayList<Node> list)
+    public ArrayList<String[]> getArrayList(NodeList list)
 
     {
+        ArrayList<String[]> arrayList = new ArrayList<>();
         try
         {
-            for (int i = 0; i < list.size(); i++)
+            for (int i = 0; i < list.getLength(); i++)
             {
-                Node child = list.get(i);
+                Node child = list.item(i);
+                String[] tagNameArray = {null, null, null, null, null, null};
                 if (child.getNodeType() == Node.ELEMENT_NODE)
                 {
                     Element eElement = (Element) child;
 
-                    System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
-                    System.out.println("Longitude : " + eElement.getElementsByTagName("Longitude").item(0).getTextContent());
-                    System.out.println("City : " + eElement.getElementsByTagName("City").item(0).getTextContent());
-                    System.out.println("State : " + eElement.getElementsByTagName("State").item(0).getTextContent());
-                    System.out.println("\n");
+
+                    String robot = eElement.getElementsByTagName("robot").item(0).getTextContent();
+                    String offon = eElement.getElementsByTagName("offon").item(0).getTextContent();
+                    String speed = eElement.getElementsByTagName("speed").item(0).getTextContent();
+                    String horizontal = eElement.getElementsByTagName("horizontal").item(0).getTextContent();
+                    String vertical = eElement.getElementsByTagName("vertical").item(0).getTextContent();
+                    String time = eElement.getElementsByTagName("time").item(0).getTextContent();
+                    tagNameArray[0] = robot;
+                    tagNameArray[1] = offon;
+                    tagNameArray[2] = speed;
+                    tagNameArray[3] = horizontal;
+                    tagNameArray[4] = vertical;
+                    tagNameArray[5] = time;
+                    arrayList.add(tagNameArray);
                 }
+            }
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return arrayList;
+    }
+
+    public void showArrayList(ArrayList<String[]> list)
+    {
+        System.out.println("THIS IS HERE");
+        try
+        {
+            for (int i = 0; i <=list.size()-1; i++)
+            {
+                System.out.println("SSSSSSSSSSSSSSSSSSSSSSSTEP "+ i);
+                System.out.println("IN SHOWARRAYLIST LIST.SIZE() " + list.size());
+                System.out.println("vvvvvvvvvvvvvvvvvvvvvvv" + list.get(i)[0]);
+                System.out.println("vvvvvvvvvvvvvvvvvvvvvvv" + list.get(i)[1]);
+                System.out.println("vvvvvvvvvvvvvvvvvvvvvvv" + list.get(i)[2]);
+                System.out.println("vvvvvvvvvvvvvvvvvvvvvvv" + list.get(i)[3]);
+                System.out.println("vvvvvvvvvvvvvvvvvvvvvvv" + list.get(i)[4]);
+                System.out.println("vvvvvvvvvvvvvvvvvvvvvvv" + list.get(i)[5]);
+                System.out.println("vvvvvvvvvvvvvvvvvvvvvvv" + "\n");
+            }
+
+            System.out.println("----------------------------");
+
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+    public void showQueue(LinkedBlockingQueue<String[]> queue)
+    {
+        System.out.println("SHOW QUEUE STARTED queue.size() = " + queue.size());
+        try
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                System.out.println("mlReader.showQueue " + queue.take()[0] + "iiiiiii = " + i + "QUEUE.SIZE " + queue.size());
             }
 
             System.out.println("----------------------------");
