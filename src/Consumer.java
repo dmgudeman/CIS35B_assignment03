@@ -17,45 +17,53 @@ class Consumer implements Runnable
         this.list = list;
 
 
+
         new Thread(this).start();
     }
     public void run()
-    { int len = list.size()-1;
+    { int len = queue.size()-1;
         for (int i = 0; i < len; i++)
         {
             try {
                 String sparky = queue.element()[0];
                 if(sparky.equals("A1"))
                 {
-                    System.out.println("queue.get()  = " + queue.remove()[0] + "for A1");
-                    System.out.println("this A1");
+                    System.out.println("\n");
+                    System.out.println("COMMAND NUMBER: "+ i + " queue.get()  = " + queue.remove()[0] + "for A1");
                     robotWork(queue.element());
                     queue.remove(i);
                 }
-                else if (queue.remove()[0] == "A2")
+                else if (sparky.equals("A2"))
                 {
-                    Thread.sleep(100);
-                    System.out.println("this A2");
+                    System.out.println("\n");
+                    System.out.println("COMMAND NUMBER: "+ i + "queue.get()  = " + queue.remove()[0] + "for A2");
+                    robotWork(queue.element());
+                    queue.remove(i);
                 }
-                 else if (queue.remove()[0] == "A3")
+                else if (sparky.equals("A3"))
                 {
-                    Thread.sleep(100);
-                    System.out.println("this A3");
+                    System.out.println("\n");
+                    System.out.println("COMMAND NUMBER: "+ i + "queue.get()  = " + queue.remove()[0] + "for A3");
+                    robotWork(queue.element());
+                    queue.remove(i);
                 }
-                 else if (queue.remove()[0] == "A4")
+                else if (sparky.equals("A4"))
                 {
-                    Thread.sleep(100);
-                    System.out.println("this A4");
+                    System.out.println("\n");
+                    System.out.println("COMMAND NUMBER: "+ i + "queue.get()  = " + queue.remove()[0] + "for A4");
+                    robotWork(queue.element());
+                    queue.remove(i);
                 }
                 else
                {
-                    System.out.println("Command not found: " + queue.element()[0]);
+                    System.out.println("\n");
+                    System.out.println("COMMAND NUMBER: "+ i + "Command not found: " + queue.element()[0]);
                }
 
-            } catch (InterruptedException e) {
+           // } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
-            }catch (NoSuchElementException f)
+         //       e.printStackTrace();
+          }catch (NoSuchElementException f)
             {
                 System.out.println("");
             }

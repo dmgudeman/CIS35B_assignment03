@@ -26,7 +26,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class XMLReader
 {
-
     public Document doc;
     public String sfile;
 
@@ -66,7 +65,6 @@ public class XMLReader
         }
         return nList;
     }
-
 
     public void showNodeList(NodeList nodeList)
     {

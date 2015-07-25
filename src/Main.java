@@ -14,12 +14,9 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class Main
 {
-    public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException,InterruptedException
+    public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException, InterruptedException
     {
-        final int COMMAND_QUEUE_SIZE = 10;
-        final int ARM_THREADS = 100;
-       LinkedBlockingQueue<String[]> queue = new LinkedBlockingQueue<String[]>();
-
+        LinkedBlockingQueue<String[]> queue = new LinkedBlockingQueue<String[]>();
 
         String sfile = "/Users/davidgudeman/Documents/workspace/CIS35B_assignment03/src/RobotData.xml";
         XMLReader xmlReader = new XMLReader(sfile);
@@ -30,20 +27,7 @@ public class Main
         System.out.println(queue.size() + "QUEUE SIZE");
         System.out.println(aList.size() + "ALIST SIZE");
 
-        ///////////////////////HERE THE ARRAYLIST IS MADE APPROPRIATELY
-
-   //     xmlReader.showArrayList(aList);
-
         Producer producer = new Producer(queue, aList);
-      //  System.out.println("MMMMMMMAIIIIINNNNNN PRODUCER>QUQUE =" + producer.queue.size());
-     //   xmlReader.showQueue(producer.queue);
-      //  System.out.println("MMMMMMMAIIIIINNNNNN PRODUCER>QUQUE =" + producer.queue.size());
-        //////////////////////////////////QUEUE IS FINE HERE
-
         new Consumer(producer.queue, aList);
-
-       // new Consumer(queue, aList);
-     //   new Consumer(queue, aList);
-      //  new Consumer(queue, aList);
     }
 }
