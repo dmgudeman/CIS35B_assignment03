@@ -16,7 +16,9 @@ public class Main
 {
     public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException, InterruptedException
     {
-       testRobotRun();
+
+       // testRobotRun();
+        robotRun();
     }
     public static void testRobotRun() throws IOException, SAXException, ParserConfigurationException, InterruptedException
     {
@@ -27,9 +29,6 @@ public class Main
         Document doc = xmlReader.ReadXML();
         NodeList nodeList = xmlReader.GetNodes(doc);
         ArrayList<String[]> aList = xmlReader.getArrayList(nodeList);
-
-        System.out.println(queue.size() + "QUEUE SIZE");
-        System.out.println(aList.size() + "ALIST SIZE");
 
         Producer producer = new Producer(queue, aList);
         new Consumer(producer.queue, aList);
@@ -44,12 +43,7 @@ public class Main
         NodeList nodeList = xmlReader.GetNodes(doc);
         ArrayList<String[]> aList = xmlReader.getArrayList(nodeList);
 
-        System.out.println(queue.size() + " QUEUE SIZE");
-        System.out.println(aList.size() + " ALIST SIZE");
-
         Producer producer = new Producer(queue, aList);
-        System.out.println(queue.size() + " QUEUE SIZE after new producer");
-        System.out.println(aList.size() + " ALIST SIZE after new producer");
 
         new Consumer(producer.queue, aList);
     }

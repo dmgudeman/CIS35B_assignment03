@@ -22,7 +22,7 @@ class Consumer implements Runnable
     }
     public void run()
     { int len = queue.size();
-        for (int i = 1; i <= len; i++)
+        for (int i = 0; i < len; i++)
         {
             try {
                 String sparky = queue.element()[0];
@@ -30,34 +30,34 @@ class Consumer implements Runnable
                 {
                     System.out.println("\n");
                     System.out.println("COMMAND NUMBER: "+ i);
-                    robotWork(queue.element());
-                    queue.remove(i);
+                    robotWork(queue.remove());
+                   // queue.remove(i);
                 }
                 else if (sparky.equals("A2"))
                 {
                     System.out.println("\n");
                     System.out.println("COMMAND NUMBER: "+ i);
-                    robotWork(queue.element());
-                    queue.remove(i);
+                    robotWork(queue.remove());
+                   // queue.remove(i);
                 }
                 else if (sparky.equals("A3"))
                 {
                     System.out.println("\n");
                     System.out.println("COMMAND NUMBER: "+ i);
-                    robotWork(queue.element());
-                    queue.remove(i);
+                    robotWork(queue.remove());
+                  //  queue.remove(i);
                 }
                 else if (sparky.equals("A4"))
                 {
                     System.out.println("\n");
                     System.out.println("COMMAND NUMBER: "+ i );
-                    robotWork(queue.element());
-                    queue.remove(i);
+                    robotWork(queue.remove());
+                   // queue.remove(i);
                 }
                 else
                {
                     System.out.println("\n");
-                    System.out.println("COMMAND NUMBER: "+ i + "Command not found: " + queue.element()[0]);
+                    System.out.println("COMMAND NUMBER: "+ i + "Command not found: " + queue.remove()[0]);
                }
 
            // } catch (InterruptedException e) {
