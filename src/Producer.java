@@ -17,9 +17,9 @@ class Producer implements Runnable
         new Thread(this).start();
         LENGTH = list.size();
         queue = packTheQueue(queue, list);
-        System.out.println("IN PRODCUUUUUUUER CONSTRUCTOR LIST.SIZE() = " + list.size());
-        System.out.println("IN PRODCUUUUUUUER CONSTRUCTOR QUEUE.SIZE() = " + queue.size());
-
+        System.out.println("\n");
+        System.out.println("IN PRODUCER CONSTRUCTOR LIST.SIZE() = " + list.size());
+        System.out.println("IN PRODUCER CONSTRUCTOR QUEUE.SIZE() = " + queue.size());
     }
 
     public void run()
@@ -67,7 +67,7 @@ class Producer implements Runnable
     {
         try
         {
-                for (int i = 0;;i++)
+                for (int i = 0;i<list.size();i++)
                 {
                     queue.put(this.list.get(i));
                     //System.out.println("IN PRODCUER CONSTRUCTOR QUEUE.SIZE() = " + LENGTH);

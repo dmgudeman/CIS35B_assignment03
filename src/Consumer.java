@@ -21,36 +21,36 @@ class Consumer implements Runnable
         new Thread(this).start();
     }
     public void run()
-    { int len = queue.size()-1;
-        for (int i = 0; i < len; i++)
+    { int len = queue.size();
+        for (int i = 1; i <= len; i++)
         {
             try {
                 String sparky = queue.element()[0];
                 if(sparky.equals("A1"))
                 {
                     System.out.println("\n");
-                    System.out.println("COMMAND NUMBER: "+ i + " queue.get()  = " + queue.remove()[0] + "for A1");
+                    System.out.println("COMMAND NUMBER: "+ i);
                     robotWork(queue.element());
                     queue.remove(i);
                 }
                 else if (sparky.equals("A2"))
                 {
                     System.out.println("\n");
-                    System.out.println("COMMAND NUMBER: "+ i + "queue.get()  = " + queue.remove()[0] + "for A2");
+                    System.out.println("COMMAND NUMBER: "+ i);
                     robotWork(queue.element());
                     queue.remove(i);
                 }
                 else if (sparky.equals("A3"))
                 {
                     System.out.println("\n");
-                    System.out.println("COMMAND NUMBER: "+ i + "queue.get()  = " + queue.remove()[0] + "for A3");
+                    System.out.println("COMMAND NUMBER: "+ i);
                     robotWork(queue.element());
                     queue.remove(i);
                 }
                 else if (sparky.equals("A4"))
                 {
                     System.out.println("\n");
-                    System.out.println("COMMAND NUMBER: "+ i + "queue.get()  = " + queue.remove()[0] + "for A4");
+                    System.out.println("COMMAND NUMBER: "+ i );
                     robotWork(queue.element());
                     queue.remove(i);
                 }
